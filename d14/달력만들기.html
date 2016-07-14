@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>달력만들기</title>
+</head>
+<style>
+#wrapper{
+	width:714px;
+	height:800px;
+	border:1px solid gray;
+	margin:auto;
+}	
+#up{
+	width:100%;
+	height:40px;
+	background:#ff6600;
+	text-align:center;
+}
+#dayTitle{
+	width:100%;
+	height:30px;
+	background:#ffcc00;
+	color:white;
+	font-weight:bold;
+	font-size:15pt;
+}
+
+ul{	
+	width:100%;
+	list-style:none;	
+}
+ul li{
+	float:left;
+	width:100px;
+
+}
+</style>
+<script src="../lib/DateBox.js"></script>
+<script>
+var year,month,date;
+var down;
+var sel_yy,sel_mm,sel_dd;
+function init(){
+	down=document.getElementById("down");
+	for(i=1;i<=42;i++){
+		var box=new DateBox(down,100,100,i);
+		box.init();
+	}
+	sel_yy=document.getElementById("sel_yy");
+	sel_mm=document.getElementById("sel_mm");
+	sel_dd=document.getElemnetById("sel_dd");
+	/*
+	var d=new Date();
+	year=d.getFullYear();
+	month=d.getMonth()+1;
+	date=d.getDate();
+	*/
+	for(var i=2020; i>=1930; i--){
+		//option 생성!!
+		var op=document.createElement("option");
+		op.text=i;
+		//select 에 추가하기!!
+		sel_yy.add(op);
+	}for(var i=1; i<=12; i++){
+		var op=document.createElement("option");
+		op.text=i;
+		
+		sel_mm.add(op);
+	}
+
+}
+
+</script>
+<body>
+	<div id="wrapper">
+		<div id="up">
+			<select id="sel_yy"></select>년
+			<select id="sel_mm"></select>월
+
+			<input type="button" value="search">
+		</div>
+		<div id="dayTitle">
+			<ul>
+				<li>일</li>
+				<li>월</li>
+				<li>화</li>
+				<li>수</li>
+				<li>목</li>
+				<li>금</li>
+				<li>토</li>
+			</ul>
+		</div>
+		<div id="down"></div>
+		
+	</div>
+
+</body>
+</html>
