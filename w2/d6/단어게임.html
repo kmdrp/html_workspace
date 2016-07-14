@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>단어 게임</title>
+<style>
+#wrapper{
+	margin:auto;
+	width:400px;
+	height:500px;
+	border:3px solid black;
+	background:#949494;
+}
+#wordv{
+	background:#c3c3c3;
+	width:100%;
+	height:100px;
+	font-size:50px;
+	text-align:center;
+	
+}
+#word_input{
+	width:97%;
+	border:6px dotted white;
+	height:70px;
+	background:#a6a6a6;
+	font-size:40pt;
+}
+#fdb{
+	width:100%;
+	height:200px;
+	font-size:130pt;
+	text-align:center;
+	color:#f6f6f6;
+	font-weight:bold;
+}
+#score{
+	width:100%;
+	height:70px;
+	font-size:50pt;
+	text-align:center;
+
+}
+
+</style>
+<script>
+var scr=0;
+var cnt=0;// 배열의 인덱스 보여주는 전역변수
+word=new Array(10);
+word[0]="피카츄";
+word[1]="라이츄";
+word[2]="파이리";
+word[3]="꼬부기";
+word[4]="버터풀";
+word[5]="야도란";
+word[6]="피죤투";
+word[7]="또가쓰";
+word[8]="아보크";
+word[9]="니드런";
+000
+//init() 게임 on됫을때 초기에 되있어야하는것
+function init(){
+	//게임에 사용할 메모리 확보
+	var wordv=document.getElementById("wordv");
+	wordv.innerText=word[cnt];
+	var word_input=document.getElementById("word_input");
+	word_input.focus();//커서올려놓기 focus()함수 호출;
+
+}
+
+function ent(){
+	var key=event.keyCode;//user input keybord ascii number return
+	//alert("return"+key);
+	if(key==13){
+		if(cnt<9){
+			
+			//inputdat?= answer --> feedback;
+			var word_input=document.getElementById("word_input");
+			if(word_input.value==word[cnt]){
+				//alert("일치합니다");
+				cnt++;
+				document.getElementById("fdb").innerText="O";
+				scr+=10;
+				document.getElementById("score").innerText=scr;
+			}
+			else{
+				//alert("틀립니다");
+				document.getElementById("fdb").innerText="X";	
+			}
+			
+			document.getElementById("wordv").innerText=word[cnt]; 				
+		}
+		else{
+			document.getElementById("fdb").innerText="End!";
+				
+		
+		}
+		document.getElementById("wordv").innerText=word[cnt];
+		
+		word_input.value="";
+	}
+	
+}//키보드를 눌럿다 뗄때 ent()호출
+
+</script>
+</head>
+<body onLoad="init()">
+
+<div id="wrapper">
+	<div id="wordv">
+	</div>
+	<div id>
+		<input type="text" id="word_input" onKeyUp="ent()">
+
+	</div>
+	<div id="fdb">
+		
+	</div>
+	<div id="score">
+	  0점
+	</div>
+</div>
+
+</body>
+</html>

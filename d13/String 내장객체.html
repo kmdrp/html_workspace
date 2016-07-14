@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>String 내장객체</title>
+</head>
+<style>
+</style>
+<script>
+/*
+	자바스크립트 내장객체중
+
+		String 객체를 학습한다.
+
+		WARNING!)모든 객체 생성시 new를 요구하는 것은 아님!
+
+
+var a="대한민국"; // new 를 명시하지않아도 내부적으로 객체를 생성한다
+//var k1=a.charAt(1);
+document.write(a.replace("대","무지큰"));
+//document.write(k1);
+for(var i=0;i<a.length;i++){
+	document.write(a.charAt(i)+"<br>");
+}
+
+
+var str="지난... 여름에 찍은 사진.jpg";
+document.write(str.substring(6,8));
+document.write("<br>");
+
+document.write(str.substring(str.length-3,str.length));
+
+document.write("가장 마지막에 발견된 .의 index는"+str.lastIndexOf(".")+"<br>");
+document.write("문자열의 총길이는 "+str.length+"<br>");
+var s=str.substring(str.lastIndexOf(".")+1,str.length);
+document.write(s);
+
+var res=str.split(".");
+document.write("<br>");
+
+document.write(res);
+*/
+var b="test-png";
+var arr=b.split("-");
+document.write("<br>");
+
+document.write(arr[0]);
+document.write("<br>");
+
+/*
+document.write(arr[0].toUpperCase());
+var b1=b.toUpperCase();
+document.write(b1);
+
+//대부분 객체지향언어에서는 일단 한번 메모리에 올라온 스트링객체는 변경이 불가능하다
+var c="    king";
+document.write("<br>");document.write("<br>");document.write("<br>");document.write("<br>");document.write("<br>");
+document.write("공백제거전"+c.length);
+document.write("공백 제거후 "+c.trim().length);
+*/
+
+
+
+/*
+//원하는 index를 추출 하시오
+document.write(a.indexOf("대"));
+document.write(a.lastIndexOf(""));
+
+*/
+</script>
+<body>
+	
+
+</body>
+</html>

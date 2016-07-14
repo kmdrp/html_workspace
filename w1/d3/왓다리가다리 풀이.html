@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>왓다리 갓다리 풀이</title>
+<style>
+span{
+	position:absolute; left:100px; top:100px;
+}
+
+</style>
+<script>
+var x=100;
+var sw=true;
+//문서내의 별을 
+function move(){
+	
+	if(sw){	
+		x+=20;
+		if(x==300){
+			sw=false;
+			
+		}
+	}else(false){
+		x-=20;
+		if(x==100){
+			sw=true;	
+		}
+		
+	}
+	document.getElementById("star").style.left=x+"px";
+}
+
+</script>
+</head>
+<body>
+<input type="button" value="이동" onClick="move()">
+<span id="star">★</span>
+
+</body>
+</html>

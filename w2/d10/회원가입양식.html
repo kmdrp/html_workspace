@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>회원가입양식</title>
+</head>
+<style>
+input{
+	align-content:
+}
+#wrapper{
+	width:1000px;
+	height:600px;
+	margin-right:auto;
+	border:1px solid black;	
+	
+}
+#leftField{
+	width:200px;
+	height:600px;
+	float:left;
+	background:#D5D5D5;
+	border-right:1px  solid black;	
+}
+#rightField{
+	width:799px;
+	height:500px;
+	float:left;
+	text-align:auto;
+	background:#EAEAEA;
+	overflow:scroll;
+}
+#sumField{
+	width:799px;
+	height:99px;
+	float:left;
+	text-align:auto;
+	background:#EAEAEA;
+	border-top:1px  solid black;	
+}
+ul{
+	list-style:none;
+	text-align:left;
+	margin:1px;
+}
+table{
+	text-align:center;
+	margin:auto;	
+}
+</style>
+<script>
+var bt;
+var m_id;
+var m_pw;
+var m_nm;
+var m_mny;
+var table;
+var sum=0;
+var sf;
+var span=document.createElement("span");
+
+//로드 되면
+var memberList=new Array();
+//var cnt;
+
+var v;
+window.addEventListener("load",function(){
+	getTitle();
+	init();	
+});
+function init(){
+	//버튼에 이벤트 처리 핸들러
+	bt=document.getElementById("bt");
+	m_id=document.getElementById("iden");
+	m_pw=document.getElementById("pwd");
+	m_nm=document.getElementById("name");
+	m_mny=document.getElementById("mny");
+	bt.addEventListener("click",function(){
+		//alert("!");
+		//아이디를 입력하지않으면 욕
+		if(m_id.value=="")
+		{
+			alert("ID value is empty!");
+			m_id.focus();
+			return;
+		}
+		else if(m_pw.value==""){
+			alert("비밀번호 value is empty!");
+			m_pw.focus();
+			return;
+		}
+		else if(m_nm.value==""){
+			alert("이름 value is empty!");
+			m_nm.focus();
+		}
+		else if(m_mny.value==""){
+			alert("금액 value is empty!");
+			m_mny.focus();
+		}
+		else{
+			//cnt=0;
+			var member=[m_id.value,m_pw.value,m_nm.value,m_mny.value];
+			/*
+			memberList[cnt]=member;			
+			cnt++;
+			*/
+			memberList.push(member);//기존배열에 요소를 추가함
+			alert(memberList.length+" 번째가입을 축하드립니다.");
+			getList();
+			getSum();
+		}
+		//패스워드를 입력하지않으면 욕
+		//등록절차 수행
+	});
+}
+function getTitle(){
+	table=document.createElement("table");
+	table.style.width=550+"px";
+	table.style.border="1px";
+	var tr=document.createElement("tr");
+	var no_td=document.createElement("td");
+	no_td.innerText="번 호";
+	var id_td=document.createElement("td");
+	id_td.innerText="아이디";
+	var pw_td=document.createElement("td");
+	pw_td.innerText="패스워드";
+	var nm_td=document.createElement("td");
+	nm_td.innerText="이름";
+	var mny_td=document.createElement("td");
+	mny_td.innerText="입력한 금액";
+	tr.appendChild(no_td);
+	tr.appendChild(id_td);
+	tr.appendChild(pw_td);
+	tr.appendChild(nm_td);
+	tr.appendChild(mny_td);
+
+	//tr을 table 에 추가
+	table.appendChild(tr);
+	rightField.appendChild(table);
+
+}
+//appendChild의 특징상 테이블에 기존값이 누적되므로 리스트르 ㄹ보여주기전에
+//테이블에 자식요소를 지우자
+function initTable(){
+	table.innerHTML="";
+	
+	getTitle();	
+	
+}
+function getList(){
+	initTable();
+	var len=memberList.length;
+	var num=len;
+	//회원수만큼 
+	for(var i=len-1;i>=0;i--){
+		var record_tr=document.createElement("tr");
+		var td0=document.createElement("td");
+		var td1=document.createElement("td");
+		var td2=document.createElement("td");
+		var td3=document.createElement("td");
+		var td4=document.createElement("td");
+
+		td0.innerText=num--;
+		td1.innerText=memberList[i][0];//i번째 레코드에 들어잇는 ID정보
+		td2.innerText=memberList[i][1];//i번쨰 레코드에 들어잇는 PW정보
+		td3.innerText=memberList[i][2];//i첫번째 레코드에 들어잇는 이름정보
+		td4.innerText=memberList[i][3];//i번째 레코드에 들어잇는 금액정보
+		record_tr.appendChild(td0);
+		record_tr.appendChild(td1);
+		record_tr.appendChild(td2);
+		record_tr.appendChild(td3);
+		record_tr.appendChild(td4);
+		table.appendChild(record_tr);		
+		//div 에 테이블 출력		
+	}	
+	rightField.appendChild(table);
+	
+}
+var sum1=0;
+var sum2=0;
+function getSum(){
+				sf=document.getElementById("sumField");
+				//span=document.getElementById("sumtxt");	
+				
+				for(var i=0;i<memberList.length;i++){
+					sum1+=parseInt(memberList[i][3]);
+				}for(var i=0;i<memberList.length-1;i++){
+					sum2+=parseInt(memberList[i][3]);
+				}
+				sum=sum1-sum2;
+				span.innerText="합계:"+sum;
+				sf.appendChild(span);
+			}
+/*
+function filterNumber(event) {
+	  var code = event.keyCode; 
+	  if (code >47 && code < 58) {
+		alert("!");
+	  } 
+	  event.preventDefault(); 
+}*/
+
+</script>
+<body>
+	<div id="wrapper">
+		<div id="leftField">				
+				<ul>
+					<li><br></li>
+					<li>I  &nbsp  &nbsp &nbsp   d <input type="text" id="iden" size="8" maxlength="12"></li>
+					<li><br></li>
+					<li>p  &nbsp &nbsp w <input type="text" id="pwd" size="8" maxlength="12"></li>
+					<li><br></li>
+					<li>이 &nbsp 름 <input type="text" id="name" size="8" maxlength="12"></li>
+					<li><br></li>
+					<li>금 &nbsp 액 <input type="text" id="mny" size="8" maxlength="12"  ></li>
+					<li><br></li>
+					<li> &nbsp  &nbsp  &nbsp  &nbsp  &nbsp <input type="button" id="bt" value="등록"  ></li>
+				</ul>
+		</div>
+		<div>
+			<div id="rightField">
+			</div>
+			<div id="sumField">	
+			
+			
+			</div>	
+		</div>	
+	</div>
+
+</body>
+</html>

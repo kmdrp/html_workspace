@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>썸네일 갤러리</title>
+<style>
+div{	
+		border:3px dotted black;
+		width:1000px;
+		height:1000px;
+		margin:auto;
+		
+}
+</style>
+<script>
+function setImg(n){
+	document.getElementById("pic").src="../images/"+n+".png";
+
+}
+
+</script>
+</head>
+<body>
+<div>
+<table  width="100%">
+	<tr>
+		<td><img src="../images/1.png" width="50px" onMouseOver="setImg('1')"></td>
+		<td><img src="../images/2.png" width="50px" onMouseOver="setImg('2')"></td>
+		<td><img src="../images/3.png" width="50px" onMouseOver="setImg('3')"></td>
+		<td><img src="../images/4.png" width="50px" onMouseOver="setImg('4')"></td>
+		<td><img src="../images/5.png" width="50px" onMouseOver="setImg('5')"></td>
+		<td><img src="../images/6.png" width="50px" onMouseOver="setImg('6')"></td>
+		<td><img src="../images/7.png" width="50px" onMouseOver="setImg('7')"></td>
+		<td><img src="../images/8.png" width="50px" onMouseOver="setImg('8')"></td>
+		<td><img src="../images/9.png" width="50px" onMouseOver="setImg('9')"></td>
+		<td><img src="../images/10.png" width="50px" onMouseOver="setImg('10')"></td>
+	</tr>
+</table>
+<img src="../images/1.png" width="1000px" id="pic">
+</div>
+</body>
+
+
+</html>

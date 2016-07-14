@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>가위바위보</title>
+<style>
+</style>
+<script>
+/*var arr=["가위","바위","보"];*/
+var rsp=new Array();
+rsp[0]="가위.png";
+rsp[1]="바위.png";
+rsp[2]="보.png";
+var r=parseInt(Math.random()*rsp.length);
+alert(r);
+document.write("<img src=\"../images/"+rsp[r]+"\">");
+</script>
+</head>
+<body>
+
+</body>
+</html>

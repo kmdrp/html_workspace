@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>왓다리갓다리</title>
+<style>
+#pic{
+	position:absolute; left:0px; top:100px;
+	transform:scale(0.5,0.5);
+}
+
+input{
+	width:200px; height:150;
+	}
+</style>
+<script>
+var x=0;
+sw=true;
+function move(){
+	
+	if(sw){
+		x+=20;
+		if(x==500){
+			sw=false;
+			}
+	
+	}
+	else{	
+		x-=20;
+		if(x==0){
+			sw=true;
+		}
+
+		
+	}
+
+	console.log(x);
+	
+	document.getElementById("pic").style.left=x+"px";
+	
+	}
+
+</script>
+</head>
+<body>
+<input type="button" value="move" onClick="move()">
+
+<br>
+<img src="../images/nal.png"  id="pic">
+</body>
+</html>

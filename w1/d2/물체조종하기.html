@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<style>
+/*
+html영역이아닌 CSS영역= 디자인 영역
+문서로서의 한계를 극복할 수있다. 예)제한없는 글씨 크기 제한없는 컨텐츠의 위치,색상 .....등등....디자인과 관련된 모든것!
+*/
+#mes{position:absolute; left:700px;top:100px; transform:rotate(0deg); transform:scale(0.5,0.5);}
+
+</style>
+<title>물체조종하기</title>
+<script>
+var x=700;
+var y=100;
+function ml(){
+	x=x-40;
+	document.getElementById("mes").style.left=x+"px";
+	
+
+}
+function mr(){
+	x=x+40;
+	document.getElementById("mes").style.left=x+"px";
+}
+function mu(){
+	y=y-20;
+	document.getElementById("mes").style.top=y+"px";
+}
+function mur(){
+	y=y-20;
+	x=x+40;
+	document.getElementById("mes").style.top=y+"px";
+	document.getElementById("mes").style.left=x+"px";
+}
+function mul(){
+	y=y-20;
+	x=x-40;
+	document.getElementById("mes").style.left=x+"px";
+	document.getElementById("mes").style.top=y+"px";
+}
+function mld(){
+	y=y+20;
+	x=x-40;
+	document.getElementById("mes").style.left=x+"px";
+	document.getElementById("mes").style.top=y+"px";
+}
+function mrd(){
+	y=y+20;
+	x=x+40;
+	document.getElementById("mes").style.left=x+"px";
+	document.getElementById("mes").style.top=y+"px";
+}
+function md(){
+	y=y+20;
+	document.getElementById("mes").style.top=y+"px";
+
+}
+function cen(){
+document.getElementById("mes").style.top=100+"px";
+ document.getElementById("mes").style.left=700+"px";
+ 
+}
+// 스타일 시트를 제어하여 물체를 도려보자
+var d=0;
+function spin(){
+d=d+90;
+document.getElementById("mes").style.transform="rotate("+d+"deg)";
+}
+var s=0.5;
+function big(){
+s=s+0.5;
+document.getElementById("mes").style.transform="scale("+s+","+s+")";
+}
+function small(){
+s=s-0.5;
+document.getElementById("mes").style.transform="scale("+s+","+s+")";
+}
+
+</script>
+</head>
+<body>
+<input type="button" value="좌상" id="down" onClick="mul()">&nbsp&nbsp&nbsp&nbsp&nbsp
+<input type="button" value="위" id="up" onClick="mu()">&nbsp&nbsp&nbsp&nbsp&nbsp
+<input type="button" value="우상" id="down" onClick="mur()">
+<br><br>
+<input type="button" value="좌" id="left" onClick="ml()" >
+&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+<input type="button" value="가운데" onClick="cen()">
+&nbsp&nbsp&nbsp&nbsp&nbsp
+<input type="button" value="우" id="right" onClick="mr()">
+<br><br>
+<input type="button" value="좌하" id="down" onClick="mld()">&nbsp&nbsp&nbsp&nbsp
+<input type="button" value="아래" id="down" onClick="md()">&nbsp&nbsp&nbsp
+<input type="button" value="우하" id="down" onClick="mrd()">
+<br><br><br>
+<!--돌아돌아-->
+<input type="button" value="돌아" onClick="spin()">
+<input type="button" value="커져" onClick="big()">
+<input type="button" value="작아져" onClick="small()">
+<img src="../images/nal.png" id="mes" >
+
+</body>
+</html>

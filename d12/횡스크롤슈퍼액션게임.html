@@ -1,0 +1,86 @@
+우<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>횡스크롤슈팅께임</title>
+</head>
+<style>
+body{
+	margin:0px;
+}
+#stage{
+	
+	background-image:url("../images/skyy.jpg");
+}
+</style>
+<script src="../lib/Hero.js"></script>
+<script src="../lib/Bullet.js"></script>
+<script src="../lib/Unit.js"></script>
+<script src="../lib/lib.js"></script>
+
+<script>
+var stage;
+var bgX=0;
+var hero;
+
+var enemyArray=new Array();
+//var st;
+window.addEventListener("load",function(){
+	init();
+	
+});
+function init(){
+	//alert(screen.width);
+	stage=document.getElementById("stage");
+	stage.style.width=screen.width+"px";
+	stage.style.height=screen.height+"px";
+	bgEffect();
+	hero=new Hero(stage,100,80,20,400,"../images/aven/ironman.png");
+	hero.init();
+	
+	var posY=0;
+	//적군 등장
+	for(var i=0;i<10;i++){
+		var unit=new Unit(stage,80,80,screen.width-20,i*100,"../images/aven/warmm.png");
+		enemyArray.push(unit);
+		unit.init(); 
+	}
+}
+//상하좌우 이벤트 처리
+window.addEventListener("keydown",function(){
+	var key=event.keyCode;
+	switch(key){
+		case 32:fire(); break;
+		case 37: hero.velX=-2 ;break;
+		case 38: hero.velY=-2;break;
+		case 39: hero.velX=2;break;
+		case 40: hero.velY=2;break;
+	}
+});
+window.addEventListener("keyup",function(){
+	var key=event.keyCode;
+	if(key==37 || key==39 ){
+		hero.velX=0;
+	}
+	if(key==38 || key==40){
+		hero.velY=0;
+	}
+});
+//fire when push space bar
+function fire(){	
+	var b=new Bullet(stage,hero.x+80,hero.y+30);
+	b.init();
+}
+
+//배경 흐름 처리
+function bgEffect(){
+	bgX-=5;
+	stage.style.backgroundPosition=bgX+"px 0px";
+	st=setTimeout("bgEffect()",60);
+}
+
+</script>
+<body>
+	<div id="stage"></div>
+</body>
+</html>

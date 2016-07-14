@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<meta charset="UTF-8">
+
+<title>j query 실습 맛보기</title>
+<style>
+#panel, #flip {
+    padding: 5px;
+    text-align: center;
+    background-color: #e5eecc;
+    border: solid 1px #c3c3c3;
+}
+#panel {
+    padding: 50px;
+    display: none;
+}
+</style>
+<script>
+$(document).ready(function(){
+    $("#flip").click(function(){
+        $("#panel").slideDown("slow");
+    });
+});
+</script>
+</head>
+<body>
+<pre>
+제이쿼리란?
+이미 자바스크립트를 모르는 유저를위해,
+유용한기능들을 함수화 시켜논 라이브러리를 의미함
+
+<p>
+갑자기 뜨는이유?
+플래시가 사라지기때문에(잡스가 플래시 조지고 뒤짐)
+이때부터 플래시가 스마트폰에서 제일먼저 퇴출,
+점차 피시에서 사라지는 중
+
+문제점: 기존에 플래시가 담당하고있던 애니매이션은
+자바스크립트로 작성해야 할 상황이 발생
+디자이너의 업무이므로 업무마비가옴
+
+이때 과거의 기술인 jquery를 다시 재조명
+</pre>
+<div id="flip">Click to slide down panel</div>
+<div id="panel">Hello world!</div>
+</body>
+</html>

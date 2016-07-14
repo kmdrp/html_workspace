@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>화살날리기</title>
+<style>
+</style>
+<script>
+var stage;
+var Arrw=function(){	
+	this.span;
+	this.target=0;
+	this.init()=function{
+		stage=document.getElementById("stage");
+		this.span=document.createElement("span");
+		this.span.innerText="→";
+		this.span.style.position="absolute";
+		this.span.style.left=20+"px";
+		this.span.style.top=200+"px";
+		this.span.style.color="white";
+		this.span.style.fontSize=80+"pt";		
+		stage.appendChild(this.span);
+		
+		this.move();
+	}
+	this.move=function(){
+		var me=this;
+		this.target+=20;	
+		this.span.style.left=this.target+"px";
+		//span.style.left=target-a*(target-parseInt(span.style.left))+"px";
+		setTimeout(function(){
+			me.move();
+		},10);
+	}
+}
+//위에서 정의한 화살 거푸짚으로부터 원하는 화살갯수를 뽑아내서 날리자
+function test(){
+var a1=new Arrw();
+	a1.init();
+}
+
+
+</script>
+</head>
+<body onLoad="test()">
+<div id="stage" style="width:100%; font-weight:bold; height:900px; background:#000000">
+</div>
+
+</body>
+</html>

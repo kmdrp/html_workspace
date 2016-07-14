@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>배열이용 갤러리</title>
+<style>
+#wrap{
+	margin:auto;
+	width:600px;
+	height:900px;
+}
+#pict{
+	
+	width:100%;
+	height:750px;
+	
+
+}
+#abv{
+	background:#ffb2d9;
+	height:150px;
+	border:3px dotted white;
+	text-align:center;
+	width:100%
+}
+#next{
+	width:100px;
+	height:100px;
+	text-align:right;
+}
+#back{
+	width:100px;
+	height:100px;
+	text-align:left;
+
+
+</style>
+<script>
+var n=0;
+var photo=new Array();
+photo[0]="doosan.png";
+photo[1]="nc.png";
+photo[2]="nexen.png";
+photo[3]="sk.png";
+photo[4]="lotte.png";
+photo[5]="kia.png";
+photo[6]="samsung.png";
+photo[7]="hanhwa.png";
+photo[8]="kt.png";
+photo[9]="lg.png";
+function nextimg(){
+	
+	if(n>photo.length-1){
+		alert("다음사진이없습니다!!!!!!!!");
+	}
+	else{
+		n++;
+		document.getElementById("pic").src="../images/"+photo[n];
+	}
+}
+
+function backimg(){
+	
+	if(n<=0)
+	{
+		alert("이전사진이없다!!!!!!!!");
+	}
+	else{
+		n--;
+		document.getElementById("pic").src="../images/"+photo[n];
+	}
+}
+
+</script>
+</head>
+<body>
+<div id="wrap" >
+	
+	<div id="pict">
+		<img src="../images/doosan.png" id="pic" width="600px" height="750px">
+
+	</div>
+	<div id="abv">
+		<img src="../images/back.png" id="back" onClick="backimg()">
+		&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+		<img src="../images/next.png" id="next" onClick="nextimg()">
+	</div>
+</div>
+</body>
+</html>

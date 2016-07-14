@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>마으스 븍습</title>
+<style>
+div{
+	background:#FFB2F5;
+	width:100%;
+	height:600px;
+}
+#irn{
+	position:absolute;
+	left:200px;
+	top:200px;
+}
+</style>
+<script>
+var sw=false;
+
+function getinf(){
+	console.log("x point:"+event.clientX+"y point:"+event.clinetY);
+	
+	
+	document.getElementById("txty").value=event.clientX;
+	document.getElementById("txtx").value=event.clientY;
+
+	if(sw){
+		document.getElementById("irn").style.border="1px solid blue";
+		document.getElementById("irn").style.left=event.clientX+"px";
+		document.getElementById("irn").style.top=event.clientY+"px";
+
+
+	}
+	else{
+		document.getElementById("irn").border="0px solid blue";
+	}
+			
+}
+function setF(){
+	sw=!sw;
+
+}
+
+
+
+</script>
+</head>
+<body onMouseMove="getinf()">
+
+x좌표:<input type="text" id="txtx">
+y좌표:<input type="text" id="txty">
+<div>
+	<img src="../images/ironm.png" id="irn" width="80px" onClick="setF();">
+</div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>로그인 폼</title>
+<style>
+</style>
+<script>
+//로그인 체크 :아이디 패스워드 입력 확인
+//서버에 정보를 보내기전에 이유저가 제대로입력햇느지 여부를체크해보자
+//= 유효성 체크
+
+function idch(){
+	if(!document.getElementById("mem_id").value);{
+		alert("3");
+		document.getElementById("mem_id").focus;
+		return;
+	}
+	else if(!document.getElementById("mem_pw").value){
+		alert("4");
+		document.getElementById("mem_pw").focus;
+		return;
+
+	}
+	else{
+		location.href="http://daum.net";
+	}
+}
+</script>
+</head>
+<body>
+	<fieldset>
+		<table width="300px" border="1px" align="center" height="100px">
+			<tr>
+				<td>ID </td>
+				<td>&nbsp&nbsp<input type="text" id="mem_id" maxlength="8" ></td>
+			</tr>
+			<tr>
+				<td>password</td>
+				<td>&nbsp&nbsp<input type="password" id="mem_pw"  maxlength="8"></td>
+			</tr>
+			<tr align="center">
+				<td colspan="2"> <input type="button" value="회원가입"> <input type="button" value="로그인" onClick="idch()"> <input type="button" value="ID/PW찾기"></td>
+			</tr>
+</body>
+</html>

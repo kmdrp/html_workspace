@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>화살날리기</title>
+<style>
+</style>
+<script>
+var stage;
+var span;
+var span1;
+var target=0;
+var a=0.95;
+var target1=0;
+var st;
+var b=0.99;
+
+
+function init(){
+	stage=document.getElementById("stage");
+	span=document.createElement("span");
+	span.innerText="→";
+	span.style.position="absolute";
+	span.style.left=20+"px";
+	span.style.top=200+"px";
+	span.style.color="white";
+	span.style.fontSize=80+"pt";
+	
+	stage.appendChild(span);
+	//////////////////////////////////////
+	span1=document.createElement("span1");
+	span1.innerText="→";
+	span1.style.position="absolute";
+	span1.style.left=20+"px";
+	span1.style.top=500+"px";
+	span1.style.color="yellow";
+	span1.style.fontSize=80+"pt";
+	
+	
+	stage.appendChild(span1);
+
+	move();
+}
+function move(){
+	
+		target=1500;
+		
+		//target1+=10;
+		//span.style.left=target+"px";
+		//span1.style.left=target1+"px";
+		span.style.left=target-a*(target-parseInt(span.style.left))+"px";
+		span1.style.left=target-b*(target-parseInt(span1.style.left))+"px";
+		st=setTimeout("move()",10);
+}
+
+
+</script>
+</head>
+<body onLoad="init()">
+<div id="stage" style="width:100%; font-weight:bold; height:900px; background:#000000">
+</div>
+
+</body>
+</html>

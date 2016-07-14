@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>베네치아게임</title>
+<style>
+#wrapper{
+	background:#dbdbdb;
+	margin:auto;
+	width:1500px;
+	height:900px;
+}
+#stage{
+	background:#ededed;
+	width:100%;
+	height:700px;
+	background-image:url("../images/taja.png");
+	background-size:1500px;
+	background-repeat:no-repeat;
+	font-weight:bold;
+}
+#ctrlr{
+	text-align:center;
+	width:99.2%;
+	height:187px;
+	background:#cacaca;
+	border:6px dotted #8c8c8c;
+}
+#hp{
+	width:300px;
+	height:187px;
+	background:#a6a6a6;
+	float:left;
+
+}
+#info{
+	width:600px;
+	height:187px;
+	background:#cacaca;
+	float:left;
+}
+#keyword{
+	width:250px;
+	height:50px;
+	background:black;
+	font-size:20pt;
+	font-weight:bold;
+	color:white;
+}
+</style>
+<script>
+var sw=true;
+var word=["texas","seattle","denver","dallas","kansas city","houston","chicago","detroit","new york","atlanta","washington","san diego","miami","jackson","new orleans","orlando","los angeles"];
+var step=0;//몇 픽셀씩 내려오게 할지 결정하는 변수
+var hp;
+var st;
+var stage;
+var warr= new Array(word.length);
+ var speed;
+ var keyword;
+ var sc;
+ var js=0;
+ var limit;// 한계선 닿으면뒤짐
+
+/*var hoarr=new Array(4);//호수 배열*/
+var flrarr=new Array(3);//층수 배열
+function init(){
+		hp=document.getElementById("hp");
+		stage=document.getElementById("stage");
+		speed=document.getElementById("speed").value;
+		keyword=document.getElementById("keyword");
+		sc=document.getElementById("sc");
+		limit=parseInt(stage.style.height);
+		/*stage.style.height*/
+		createHp();
+		createTag();
+		
+}
+function createTag(){
+	for(var i=0;i<word.length;i++){
+
+			var t=(parseInt(Math.random()*100));
+			var span=document.createElement("span");
+			span.style.position="relative";
+			//span.style.font.size="90px";
+			span.style.color="#5f00ff";
+			//span.style.background.src="../image/taja.png";
+			span.style.left=i*25+"px";
+			span.style.top=-t+"px";
+			span.innerText=word[i];
+			stage.appendChild(span);
+			warr[i]=span;//span은 지역변수이기때문에, 반복문끝난후에 접근할수없!
+			//따라서 전역배열에 담아둬야한다!!
+	}
+}
+function createHp(){
+		//3 X 3 테이블을 구성
+		var table=document.createElement("table");
+		table.style.border="3px solid black";
+		
+		for(var j=0;j<3;j++){
+			var tr=document.createElement("tr");
+			table.appendChild(tr);
+			var hoarr=new Array(4);//호수 배열
+			for(i=0;i<4;i++){
+				var td=document.createElement("td");
+				td.style.width=70+"px";
+				td.style.height=55+"px";
+				td.style.background="#f361a6";
+				td.innerHTML="";
+				tr.appendChild(td);
+				hoarr[i]=td;//td 를 상자에담자 
+			}
+			flrarr[j]=hoarr;
+			table.appendChild(tr);		
+		}
+		//hp div에 table 등록
+		hp.appendChild(table);
+}
+/*
+function start(){
+	flrarr[2][2].style.background="#ffffff";//hp깍기
+}
+*/
+function gamestart(){	
+	
+	if(sw){
+		sw=!sw;
+		// make span tag for word , attach for stage!
+		drop();		
+}else{
+		pause();
+		sw=!sw;
+	}
+	keyword=document.getElementById("keyword");
+	keyword.focus();
+}
+//text down effect
+function drop(){
+	for(i=0;i<word.length;i++){		
+		warr[i].style.top=parseInt(warr[i].style.top)+step+"px";		
+	}//여기까진 떨어뜨리기
+	//현재 내려오고 있는 단어가 limit을 넘어섯는지 조사
+	for(var m=0;m<word.length;m++){
+
+		if((parseInt(warr[1].style.top))>=limit){
+			//alert("yy");
+			
+			flrarr[0][0].style.background="#ffffff";
+			warr[i].innerText="";
+		
+		}
+	}
+	step=20;
+	var level=document.getElementById("speed").value;
+	st=setTimeout("drop()",level);//select define fast
+}
+function pause(){
+	clearTimeout(st);
+}
+function enter(){
+	if(event.keyCode==13){
+		for(i=0;i<word.length;i++){
+			if(warr[i].innerText==keyword.value){
+				
+				//stage.removeChild(wrr[i]);
+				warr[i].innerText="";
+				keyword.value="";
+				//score++
+				js+=10;
+				sc.value=js;
+			}
+		}
+		
+	}
+}
+</script>
+</head>
+<body onLoad="init()">
+	<div id="wrapper">
+		<div id="stage" style="height:700px">
+		</div>
+		<div id="ctrlr">			
+			<div id="info">
+				<select id="speed">
+					<option value="1500">LV.1</option>
+					<option value="1200">LV.2</option>
+					<option value="900">LV.3</option>
+					<option value="500">LV.4</option>
+					<option value="250">LV.5</option>
+				</select>
+					<input type="button"value="start" onClick="gamestart()"><br>
+					<input type="text" value="0" id="sc">점
+			</div>				
+			<div id="hp">
+			</div>
+			<div id="scr">
+				<input type="txt" id="keyword" onKeyUp="enter()" >
+			</div>
+		</div>		
+	</div>
+</body>
+</html>

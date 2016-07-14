@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+<title>이퀄라이져</title>
+</head>
+<style>
+#body{
+	margin:0px
+}
+#stage{
+	margin:0px auto;
+	width:700px;
+	height:500px;
+	
+}
+</style>
+<script src="../lib/lib.js"></script>
+<script>
+var bgArray=["red","orange","yellow","green","blue","navy","purple"];
+var rectArray=new Array();
+var Rect=function(stage,bg,width,height,x,y){
+	this.stage=stage;
+	this.div;
+	this.bg=bg;
+	this.width=width;
+	this.height=height;
+	this.x=x;
+	this.y=y;
+	this.targetY=0;//y축늘리기
+	
+	this.a=0.95;
+	this.posY=40;
+
+	this.init=function(){
+		var me=this;
+		this.div=document.createElement("div");
+		this.div.style.background=this.bg;
+		this.div.style.width=this.width+"px";
+		this.div.style.height=this.height+"px";
+		this.div.style.position="absolute";
+		this.div.style.left=this.x+"px";
+		this.div.style.top=this.y+"px";
+
+		this.stage.appendChild(this.div);
+		
+		this.div.addEventListener("mouseover", function(){
+			me.targetY=500;
+			
+		});
+
+		//마우스내려놓으면
+		this.div.addEventListener("mouseout", function(){
+			
+			me.targetY=0;
+			me.div.style.height=40+"px";
+		});
+		this.move();
+	}
+
+	this.move=function(){
+		var me=this;
+		var y=parseInt(this.div.style.height)+5;
+		this.div.style.height=this.targetY- this.a*(this.targetY-y)+"px";
+		
+		setTimeout(function(){
+			me.move();
+		},10);
+	}
+}
+
+window.addEventListener("load",function(){
+	init();
+});
+
+//문서가 로드되면 원하는 갯수의 사각형을 가로방향으로 나열!!!
+function init(){
+	for(var i=0;i<bgArray.length;i++){
+		var rect=new Rect(stage,bgArray[i],100,40,i*100,0);
+		rect.init();
+		rectArray[i]=rect;
+	}
+	dance();
+}
+//일정한 주기간격으로
+function dance(){
+	
+	for(var i=0;i<rectArray.length;i++){
+		rectArray[i].targetY=getRandomByRange(500,40);
+		
+	}
+	setTimeout("dance()",300);
+}
+</script>
+<body>	
+	<div id="stage"></div>
+</body>
+</html>

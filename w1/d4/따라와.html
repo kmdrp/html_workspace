@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>끌고다니기</title>
+<style>
+img{
+		transform:scale(0.3,0.3);
+}
+</style>
+<script>
+//문서가 실행되면 아래의 텍스트박스에 내이름넣기!!
+function asit(){
+	document.getElementById("txt").value="apple";
+}
+</script>
+</head>
+<body onLoad="asit()">
+<input type="text" value="" onchange="alert('4532813541683')" id="txt">
+<select onChange="alert('바꿈?')">
+	
+		<option>네이버</option>
+		<option>다음</option>
+		<option>구글</option>
+	
+
+</select>
+<!--
+<img src="../images/nal.png" onMouseOver="onDblClick('올렸어?')">
+<img src="../images/nal.png" onMouseOver="alert('올렸어?')">
+
+<input type="text" onFocus="alert('올렸어')">
+<input type="text" onBlur="alert('벗어났어')">
+-->
+</body>
+</html>

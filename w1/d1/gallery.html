@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script>
+	//next 함수 정의
+
+	/*
+	특정영역을 브레이스로 감싸고 그 감싼영영에 이름을 붙인 단위를
+	함수라 하며 함수는 호출해야 작동한다
+	*/
+	function next(){
+		
+		//alert("asdf");
+		//문서내의 이미지를 다른것으로 바꾼다!!
+		//문서내의 포토라는 요소를
+		document.getElementById("pt").src="../images/a.jpg";
+		document.getElementById("pt").src="../images/c.jpg";
+	}
+	</script>
+</head>
+<body>
+	<img id="pt" src="..\images\b.jpg" width="400px" >
+	<input type="button" value="botton" onClick="next()">
+</body>
+</html>

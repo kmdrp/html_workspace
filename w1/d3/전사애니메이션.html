@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>애니메이션</title>
+
+<script>
+
+var x=1;
+function fly(){
+	x++;
+	if(x>18){
+		x=1;
+	}
+	
+	// x++;
+	//x=(x>19)?1:x;
+
+	
+	console.log(x);
+	document.getElementById("pic").src="../images/warior/image"+x+".png";
+	//컴퓨터가 스스로 이함수를 호출하게하자!!
+	//setTimeout 1/1000 초까지 표현가능
+	setTimeout("fly()",50);
+
+	
+}
+
+
+
+</script>
+</head>
+<body>
+<input type="button" value="v"onClick="fly()"> <br>
+<img src="../images/warior/image1.png" id="pic"  >
+</body>
+</html>

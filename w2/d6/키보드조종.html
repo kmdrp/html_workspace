@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>키보드로 조종하기</title>
+<style>
+body{
+	margin:0px;
+}
+#bg{
+	width:100%;
+	height:950px;
+	background:url("../images/avengers.jpg") ;
+	background-repeat:repeat-x;
+	
+}
+#cap{
+	position:absolute;
+	top:300px;
+	left:0px;
+	width:100px;
+	height:100px;
+}
+#sh{
+	position:absolute;
+	top:330px;
+	left:0px;
+	width:60px;
+	height:50px;
+}
+</style>
+<script>
+var x=0;
+var shld=0;
+function init(){
+
+	//문서가 로드되면 배경을 x축 방향으로 감소시키자.!!		
+	x-=1;//-5씩(왼쪽으로 5px만큼)
+	document.getElementById("bg").style.backgroundPosition=x+"px 0px";
+	setTimeout("init()",10);
+	
+}
+//키보드 방향키 조작 함수
+//우리가 입력한 키를 10진수를 
+var bt=300;
+var bl=0;
+function control(){
+	var key=event.keyCode;
+	if(key==40){
+		bt+=20;
+		cap.style.top=bt+"px";
+		sh.style.top=(bt+20)+"px";
+	}
+	else if(key==38){
+		bt-=20;
+		cap.style.top=bt+"px";
+		sh.style.top=(bt+20)+"px";
+	}
+	else if(key==37){
+		bl-=20;
+		cap.style.left=bl+"px";
+		sh.style.left=(bl+20)+"px";
+	}
+	else if(key==39){
+		bl+=20;
+		cap.style.left=bl+"px";
+		sh.style.left=(bl+20)+"px";
+	}
+	else if(key==32){
+		
+		fire();
+	}
+}
+var tf=true;
+function fire(){		
+	
+	if(shld<2000)
+		shld+=40;
+		
+		
+		
+	
+	else {
+		sh.style.left=(cap.style.left-10)+"px";	
+		clearTimeout(st);
+		
+		
+	}
+	var st=setTimeout("fire()",10);
+	sh.style.left=shld+"px";
+}
+</script>
+</head>
+<body onLoad="init()" onKeyDown="control()">
+	<div id="bg">
+	<img src="../images/cap.png" id="cap" >
+	<img src="../images/shield.png" id="sh">
+</body>
+</html>

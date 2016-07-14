@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>메이즈 러너</title>
+</head>
+<style>
+body{
+	margin:0px;
+}
+
+</style>
+<script src="../lib/Hero.js"></script>
+<script src="../lib/maze.js"></script>
+<script>
+
+var mon;
+var stage;
+window.addEventListener("load",function(){
+	init();	
+});
+function init(){
+	stage=document.getElementById("stage");
+	stage.style.width=screen.width+"px";
+	stage.style.height=800+"px";
+	stage.style.backgroundImage="url('../images/ski.jpg')"
+
+/*window.addEventListener("click",function(){
+	maze.change();
+});
+*/
+//define maze
+	var cnty=0;//밑으로 내려가는변수
+	var cntx=0;
+
+	var w=20;
+
+	for(var i=0;i<2200;i++){
+		if(i%60==0){
+			cnty++;
+			cntx=0;
+		}
+		var maze=new Maze(stage,w,w,cntx*(w+1),cnty*(w+1));
+		maze.init();
+		cntx++;
+	}
+	mon=new Hero(stage,50,50,100,50,"../images/poketmon/rizamong.png");
+	mon.init();
+}
+
+//상하좌우
+window.addEventListener("keydown",function(){
+	var key=event.keyCode;
+	switch(key){
+		case 37: goleft(); break;
+		case 38: godown(); break;
+		case 39: goright(); break;
+		case 40: goup(); break;
+	}
+
+});
+window.addEventListener("keyup",function(){
+	var key=event.keyCode;
+	if(key==37||key==39){
+		mon.velX=0;
+	}
+	if(key==38||key==40){
+		mon.velY=0;
+	}
+		
+});
+function goleft(){
+	var result=hitTest(mon.img,div);	
+
+	mon.velX=-1;
+}
+function godown(){
+	mon.velY=-1;
+}
+function goright(){
+	mon.velX=1;
+}
+function goup(){
+	mon.velY=1;
+}
+</script>
+<body>
+<div id="stage"></div>
+</body>
+</html>

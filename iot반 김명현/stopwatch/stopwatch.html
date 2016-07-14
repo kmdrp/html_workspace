@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>stopwatch</title>
+<style>
+#dv{
+	position:absolute;
+	top:320px;
+	left:430px;
+	font-weight:bold;
+	font-size:40px;
+	color:white;
+	text-align:center;
+	z-index:3;
+	}
+#pic{
+	position:absolute;
+	top:190px;
+	left:280px;
+	width:800px;
+	height:400px;
+	margin:auto;
+	z-index:1;
+}
+#bt_stt{
+
+	top:195px;
+	left:295px;
+	width:240px;
+	height:40px;
+	transform:rotate(-23deg);
+	border:3px solid black;
+	position:absolute;
+	background:black;
+	color:white;
+	font-weight:bold;
+	z-index:2;
+	
+}	
+
+#bt_stp{
+	top:200px;
+	left:830px;
+	width:240px;
+	height:40px;
+	transform:rotate(23deg);
+	border:3px solid black;
+	position:absolute;
+	background:black;
+	color:white;
+	font-weight:bold;
+	z-index:2;
+	
+	
+}
+
+#txts{
+	width:130px;
+	height:95px;
+	font-size:80px;
+	font-weight:bold;
+	background:black;
+	
+	color:white;
+	text-align:right;/* 내용물에 대한 우측정렬*/
+	border:3px solid black;
+}
+#txtm{
+	width:130px;
+	height:95px;
+	font-size:80px;
+	font-weight:bold;
+	background:black;
+	border:3px solid black;
+	color:white;
+	text-align:right;/* 내용물에 대한 우측정렬*/
+}
+#txtt{
+	position:relative;
+	width:150px;
+	height:95px;
+	font-size:80px;
+	font-weight:bold;
+	background:black;
+	border:3px solid black;
+	color:white;
+	text-align:right;/* 내용물에 대한 우측정렬*/
+}
+
+
+</style>
+<script>
+var s=0;
+var m=0;
+var t=0;
+var st ;
+var sw=true;
+function sec(){
+	s++;
+	document.getElementById("txts").value=s+"s";
+	if(s==60){
+		s=0;
+		document.getElementById("txts").value=s+"s";
+		m++;
+		document.getElementById("txtm").value=m+"m:";
+		
+	}
+	if(m==60){
+		m=0;
+		document.getElementById("txtm").value=m+"m";
+		
+		t++;
+		document.getElementById("txtt").value=t+"t";
+	}
+
+}
+function stt(){
+	
+	st=setInterval("sec()",10);
+	/*  
+	setInterval 은 다른 함수 호출할때 쓰고
+	setTimeOut 은 재귀호출(자기자신을 호출)
+	*/
+	document.getElementById("bt_stt").disabled=true;
+		
+}
+function stp(){
+	
+	if(sw){
+		clearTimeout(st);//기존 셋타임 아우셍 의한 자동호출을 중지!
+		sw=false;
+		document.getElementById("bt_stt").disabled=false;
+	}
+	else{
+		document.getElementById("txts").value=0+"s";
+		document.getElementById("txtm").value=0+"m:";
+		document.getElementById("txtt").value=0+"t";
+		sw=true;
+	}
+}
+function init(){
+		document.getElementById("txts").value=0+"s";
+		document.getElementById("txtm").value=0+"m:";
+		document.getElementById("txtt").value=0+"t:";
+
+}
+</script>
+</head>
+
+<body onLoad="init()">
+
+	<input type="button" value="시작" id="bt_stt" onClick="stt()" >
+		<input type="button" value="정지"  id="bt_stp"onClick="stp()">
+	<img src="../images/watch.png"  id="pic" align="center"> 
+	<div id="dv" >
+
+		
+		<input type="text" id="txtt" value="0t">
+		
+		<input type="text" id="txtm" value="0m">
+		
+		<input type="text" id="txts" value="0s"><!-- default 가 text 오타나도 텍스트만들어짐-->
+		
+	</div>
+</body>
+</html>

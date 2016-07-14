@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>마우스 이벤트</title>
+<style>
+div{
+	background:yellow;
+	height:1000px;
+	width:100%;
+	}
+</style>
+<script>
+function getinfo(){
+	console.log("x좌표:"+event.clientX+"y좌표:"+event.clientY);
+
+	
+	document.getElementById("xx").value=event.clientX;
+	document.getElementById("yy").value=event.clientY;
+
+}
+
+</script>
+
+</head>
+<body onMouseMove="getinfo()">
+
+	x좌표 : <input type="text" id="xx">
+	y좌표 : <input type="text" id="yy">
+
+	<div >
+	this is div
+	</div>
+
+</body>
+
+
+</html>

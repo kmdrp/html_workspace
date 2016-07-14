@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>부드러운움직임</title>
+<style>
+/*#gho{
+	
+	left:0px;
+	top:200px;
+	width:80px;
+}*/
+#spce{
+	width:2000px;
+	height:800px;
+	background:#cefbc9
+}
+</style>
+<script>
+var gho;
+var a=0.5;
+var targetX;
+var targetY;//도달할 목표지점
+var spce;
+var point
+
+var data=new Array();//좌표정보를 담는 ㄴ일차원 배열을 담을 큰 배열
+var cnt=0;
+function init(){
+	gho=document.getElementById("gho");
+	spce=document.getElementById("spce");
+}
+//목표지점- 비율계수*(목표지점-나의위치)
+function move(){
+	//alert(parseInt(gho.style.left));
+	/*targetX=event.ClientX;
+	targetY=event.ClientY;*/
+
+	gho.style.top=targetY-a*(targetY-parseInt(gho.style.top))+"px";
+	gho.style.left=targetX-a*(targetX-parseInt(gho.style.left))+"px";
+	//setTimeout("move()",100);
+}
+function getimg(){
+	
+	targetX=event.clientX;
+	targetY=event.clientY;
+	
+	
+	
+	spce.appendChild(gho);
+	setInterval("move()",400);
+}
+</script>
+</head>
+<body onLoad="init()">
+<div id="spce" onClick="getimg()">
+	<img src="../images/poketmon/ghost.png" id="gho" onMouseOver="move()" style="position:absolute;left:0px;top:200px;width:120px;">
+</div>
+</body>
+</html>

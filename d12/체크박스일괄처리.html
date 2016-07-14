@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>체크박스일괄처리</title>
+</head>
+<style>
+</style>
+<script>
+function checkAll(){
+	var boss=	document.getElementById("boss");		
+	var ch=document.getElementsByName("ch");
+
+	for(i=0;i<ch.length;i++){
+		ch[i].checked=boss.checked;
+	}
+
+}
+
+
+</script>
+<body>
+	<input type="checkbox" id="boss" onClick="checkAll()">  KING
+	<p>
+
+	<input type="checkbox" name="ch"><br>
+	<input type="checkbox" name="ch"><br>
+	<input type="checkbox" name="ch"><br>
+	<input type="checkbox" name="ch"><br>
+	<input type="checkbox" name="ch"><br>
+	<input type="checkbox" name="ch"><br>
+	<input type="checkbox" name="ch"><br>
+	
+</body>
+</html>

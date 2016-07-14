@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title></title>
+
+</head>
+<body>
+	<input type="text" value="0" id="txt">
+	<input type="button" value="증가" onClick="add()">
+	<input type="button" value="감소" onClick="sub()">
+
+</body>
+</html>
+<script>
+
+//버튼을 누르면 카운터값을 1씩 증가시켜 텍스트에 입력
+
+
+
+//버튼을 누르면 수행할 코드영역
+
+var x=1; //>>>>>전역변수 브라우저를(실행중인 프로그램) 종료할때(프로세스가 끝날때
+function add(){
+	//var x=1;  >>>> 지역변수 닫는괄호를 만나면 변수는 메모리에서 사라진다.
+	x++;
+	document.getElementById("txt").value=x;
+	}
+function sub(){
+	document.getElementById("txt").value--;
+}
+
+
+</script>

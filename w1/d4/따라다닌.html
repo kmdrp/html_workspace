@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>따라다니기</title>
+<style>
+#pic{
+	position:absolute;
+	left:100px;
+	top:100px;
+	width:70px;
+	
+}
+div{
+	background:yellow;
+	width:100%;
+	height:1000px;
+	}
+
+</style>
+<script>
+
+	var flag=false;//사진을 움직이게핮리 여부를 결정하는 변수
+	function getinf(){
+		console.log("x좌표:"+event.clinetX+",y좌표:"+event.clientY);
+
+		document.getElementById("xx").value=event.clientX;
+		document.getElementById("yy").value=event.clientY;
+		
+		if(flag){
+			document.getElementById("pic").style.border="1px solid red";
+			document.getElementById("pic").style.left=(event.clientX-30)+"px";
+			document.getElementById("pic").style.top=(event.clientY-30)+"px";
+		}
+		else{
+			document.getElementById("pic").style.border="0px solid red";
+		}
+	}
+		function setFlag(){
+		flag=!flag
+		}
+</script>
+</head>
+<body onMouseMove="getinf()">
+x:<input type="text" id="xx">
+y:<input type="text" id="yy">
+<div><img src="../images/nal.png" id="pic" onClick="setFlag()"></div>
+</body>
+</html>

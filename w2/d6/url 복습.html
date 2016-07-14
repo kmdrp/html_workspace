@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>url오브복습</title>
+<style>
+</style>
+<script>
+var i;
+var domain=["naver.com","daum.net","google.com"];
+function gourl(){
+	if(document.getElementById("seldom").value=="네이버"){
+		i=0;
+	}
+	else if(document.getElementById("seldom").value=="다음"){
+		i=1;
+	}
+	else if(document.getElementById("seldom").value=="구글"){
+		i=2;
+	}
+
+	location.href="http://www."+domain[i];
+}
+
+</script>
+</head>
+<body>
+
+<select id="seldom">
+	<option value="네이버">네이버</option>
+	<option value="다음">다음</option>
+	<option value="구글">구글</option>
+</select>
+<input type="button" value="이동" onClick="gourl()">
+</body>
+</html>

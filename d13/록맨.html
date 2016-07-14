@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>록맨</title>
+</head>
+<style>
+</style>
+<script src="../lib/Bullet.js"></script>
+<script src="../lib/Block.js"></script>
+<script src="../lib/lib.js"></script>
+<script src="../lib/Unit.js"></script>
+<script src="../lib/Rockman.js"></script>
+<script>
+var rockman;
+var block;
+var stage;
+var width;
+var height;
+var blarr=new Array();
+var step=0;
+var bgX=0;
+var enemyArray=new Array();
+var actionArray=["../images/rm/rm0.png","../images/rm/rm1.png","../images/rm/rm2.png","../images/rm/rm3.png"];
+var actioncnt=0;
+var speedcnt=0;//액션카운트 변화하는 속도 제어
+
+
+window.addEventListener("load",function(){
+	init();
+});
+function init(){
+	document.body.style.margin=0+"px";
+	//무대크기 설정하기 
+	stage=document.getElementById("stage");
+	stage.style.width=screen.width+"px";
+	stage.style.height=632+"px";
+
+	stage.style.backgroundImage="url('../images/bg.png')";
+	rockman=new Rockman(stage,60,60,300,0,"../images/rm/rock.png");
+	rockman.init();
+	
+	for(var i=0;i<10;i++){
+		block=new Block(stage,30,30,i*31,620,"../images/blck.png");
+		block.init();
+		blarr.push(block);	
+	}
+	for(var i=0;i<10;i++){
+		block=new Block(stage,30,30,700+i*31,620,"../images/blck.png");
+		block.init();
+		blarr.push(block);	
+	}
+	gameStart();
+	bgEffect();
+	createEnemy();
+	
+	var posX=event.clientX;
+	var posY=event.clientY;
+	for(var i=0;i<10;i++){	
+		block=new Block(stage,30,30,400+i*31,550,"../images/blck.png");
+		block.init();
+		blarr.push(block);
+	}
+}
+function gameStart(){
+	
+}
+function createEnemy(){
+	var enemyImg=["../images/aven/hul.png","../images/aven/ironmm.png","../images/aven/wrm.png","../images/aven/capaa.png"];
+
+	
+	var r=getRandomByRange(3,0);
+	var enemy=new Unit(stage,80,80,screen.width-75,300+(r+1)*100,enemyImg[r]);
+	enemy.init();
+	enemyArray.push(enemy);
+
+}
+
+window.addEventListener("keydown",function(){	
+	var key=event.keyCode;
+	switch(key){
+		case 32: jump(); break;//space bar
+		case 37: go(-2); break;
+		case 39: go(2); break;
+		case 65: fire(); break;
+	}
+});file:///E:/iot/html_workspace/images/blck.png
+window.addEventListener("keyup",function(){	
+	var key=event.keyCode;
+	if(key==37||key==39){
+		rockman.velX=0;
+		step=0;
+		rockman.running=false;
+	}
+});
+
+function jump(){
+	if(!rockman.jumping && !rockman.falling){
+		rockman.velY=-7;
+	}
+	rockman.jumping=true;
+}
+function fire(){
+	var bullet = new Bullet(stage,rockman.x,rockman.y);
+	bullet.init();
+	
+}
+var actioncnt=0;
+function go(s){
+	step=s;
+	rockman.velX=step;
+	console.log("speedcnt"+(speedcnt++));
+	rockman.running=true;
+
+}
+
+function bgEffect(){
+	//카메라 처리 움직임 처림
+	bgX-=(step*5);
+	stage.style.backgroundPosition=bgX+"px 0px"
+	setTimeout("bgEffect()",100);	
+}
+</script>
+<body>
+	<div id="stage"></div>
+	<input type="button" value="game start" onClick="gameStart()">
+
+</body>
+</html>

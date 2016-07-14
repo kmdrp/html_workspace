@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title></title>
+<style>
+#monitor{
+	background: #b2ccff;
+	width:500px;
+	height:70px;
+	border:2px solid #4641d9;
+	font-size: 30px;
+	font-weight:bold;	
+	
+}
+input{
+	
+	width:40px;
+	height:30px;
+}
+
+</style>
+<script>
+var n=1;
+var isPlaying=false;
+function play(){
+	if(!isPlaying){
+		
+		isPlaying=true;
+		document.getElementById("music").load();
+		document.getElementById("play").src="../images/pause.png";
+		document.getElementById("mar").innerText=n+".mp3 is Playing";
+		document.getElementById("play").src="../images/pause.png";
+		
+		document.getElementById("music").play();
+		document.getElementById("music").loop=document.getElementById("rp").checked;//checkbox상태에따라loop 여부 결정
+
+	}
+	else{
+		document.getElementById("music").pause();
+		isPlaying=false;
+		document.getElementById("play").src="../images/play.png";
+		document.getElementById("mar").innerText="pause";
+	}
+}
+function back(){
+	if(n>1){
+		n--;
+		document.getElementById("music").src="../music/"+n+".mp3";
+		play();
+		
+	}
+	else{
+		n=1;
+		document.getElementById("music").src="../music/"+n+".mp3";
+		play();
+	}
+	document.getElementById("mar").innerText=n+".mp3 is Playing";
+}
+
+function stop(){
+	//다시 음악을 준비시켜라
+	document.getElementById("music").load();
+	document.getElementById("mar").innerText="stopped!";
+}
+
+function next(){
+	if(n<15){
+		n++;
+		document.getElementById("music").src="../music/"+n+".mp3";
+		play();
+
+	}
+	else{
+		n=6;
+		document.getElementById("music").src="../music/"+n+".mp3";
+		play();
+	}
+	document.getElementById("mar").innerText=n+".mp3 is Playing";
+}
+
+</script>
+</head>
+<body>
+<audio id="music">
+	<source src="../music/1.mp3" id="dest" type="audio/mpeg">
+</audio>
+<div id="monitor">
+<marquee id="mar">"mp3 플레이어"</marquee>
+</div>
+
+
+<input type="image" src="../images/back.png"  onClick="back()">
+<input  type="image" src="../images/stop.png" onClick="stop()">
+<input type="image" id="play"src="../images/play.png" onClick="play()">
+
+<input type="image" src="../images/next.png" onClick="next()">
+
+repeat<input type="checkbox" id="rp">
+random<input type="checkbox" onClick="random()">
+</body>
+</html>

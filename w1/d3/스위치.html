@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>스위치</title>
+<style>
+/*
+누구를 어떻게 할지에 대한 문법
+버튼을 키우고싶어
+*/
+
+input{
+	width:150px; height:80px; background:#ffff66; font-size:20pt;color:#3333ff;
+}
+body{
+	background:#00ccff;
+}
+</style>
+<script>
+var bg;
+var x="#0033ff";
+var y="#00ccff"
+sw=true;
+//0066cc 하늘색 
+function on(){
+	//백그라운드 색 노란색
+	bg=x;
+	document.body.style.background=bg;
+}
+function off(){
+	bg=y;
+	document.body.style.background=bg;
+
+	//백그라운드 색 흰색
+	
+}
+function oneTouch(){
+	
+	if(bg==x){
+		bg=y;
+	}
+	else{
+		bg=x;
+	}
+	document.body.style.background=bg;
+	console.log(x);
+}
+
+</script>
+</head>
+<body>
+<input type="button" value="ON" onClick="on()">
+<input type="button" value="OFF" onClick="off()">
+<input type="button" value="CLICK" onClick="oneTouch()">
+
+</body>
+</html>

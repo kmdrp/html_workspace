@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>도장찍기</title>
+<style>
+body{margin:0px;}
+div{background:yellow; height:800px;}
+</style>
+<script>
+var wrapper;
+
+function init(){
+	wrapper=document.getElementById("wrapper");
+}
+
+function stamp(){
+	var h=100;//도장의 세로폭
+	var w=100;//도장의 가로폭
+	//div 안에 이미지 출력
+	/*결론:문자열로 도장찍기는 무리가있다.
+	위치문제도 그렇고 누적부분도 있고
+	해결체ㅐㄱ:진짜 태그를 생성하겟다 실행타임ㅇ
+
+	wrapper.innerHTML="<img src=\"../images.png\">";
+	문서내에 태그를 생성하여 부착하자
+
+	*/
+	var img=document.createElement("img");
+	img.src="../images/shield.png";//생성된 이미지에 경로 
+	img.style.width=w+"px";
+	img.style.height=h+"px";
+	img.style.position="absolute";//절대위치 지정
+	img.style.left=(event.clientX-w/2)+"px";//마우스 클릭시 x좌표
+	img.style.top=(event.clientY-h/2)+"px";//마우스 클릭시 y좦표
+	
+	wrapper.appendChild(img);
+}
+
+
+</script>
+</head>
+<body onLoad="init()" onMouseDown="stamp()">
+	<div id="wrapper"></div>
+	<img src="" width="">
+
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>우편번호검색</title>
+</head>
+<style>
+</style>
+<script>
+//새창에서 선택한 현재의 우편번호 텍스트를, 부모 window의 우편번호 입력란으로
+//주소도 채워넣기 
+function setPost(zip, addr){
+	
+	var arr=zip.split("-");
+
+	opener.document.form1.zipcode1.value=arr[0];
+	opener.document.form1.zipcode2.value=arr[1];
+	alert(addr);
+	opener.document.form1.addr1.value=addr;
+	//window.close();
+	opener.document.form1.addr2.focus();
+
+}
+
+</script>
+<body bgcolor="yellow">
+	<table width="100%" border="1px">
+		<tr>
+			<td colspan="2" align="center">
+				<input type="text">
+				<img src="/images/search.png"width="30px" onClick="" >
+			</td>
+		</tr>	
+		<tr>
+			<td>우편번호</td>			
+			<td>주소</td>		
+		</tr>
+		<tr onMouseover="this.style.background='#33ffff'" onMouseout="this.style.background=''">
+			<td ><a href="javascript:setPost('123-789','서울 강남구 신사동')" >
+			123-789</a></td>			
+			<td >서울 강남구 신사동</td>		
+		</tr>
+		<tr onMouseover="this.style.background='#33ffff'" onMouseout="this.style.background=''">
+			<td><a href= >010-123</a></td>			
+			<td id="add1" >부산 해운대구 해운대동</td>		
+		</tr>
+		<tr onMouseover="this.style.background='#33ffff'" onMouseout="this.style.background=''">
+			<td><a href=>155-654</a></td>			
+			<td id="add2">서울 동대문구 청량리동</td>		
+		</tr>
+		<tr onMouseover="this.style.background='#33ffff'" onMouseout="this.style.background=''">
+			<td><a href=>101-123</a></td>			
+			<td id="add3">서울 송파구 잠실동</td>		
+		</tr>
+		<tr onMouseover="this.style.background='#33ffff'" onMouseout="this.style.background=''">
+			<td ><a href=>963-258</a></td>			
+			<td id="add4">newyork usa</td>		
+		</tr>
+	</table>
+</body>
+</html>

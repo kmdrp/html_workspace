@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>shrekgallery</title>
+<style>
+body{
+	margin:0px;
+}
+#wrapper{	
+	width:500px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:200px;	
+	text-align:center;
+	font-size:20pt;
+}
+#mask{	
+	width:500px;
+	height:340px;
+	overflow:hidden;
+}
+#box{	
+	
+	/*width:3560px;*/
+	height:340px;
+}
+a{
+	text-decoration:none;
+	color:black;
+}
+a:hover{
+	color:#ff00dd;
+}
+</style>
+<script>
+
+var arr=["../images/shurek/img0.jpg",
+				"../images/shurek/img1.jpg",
+				"../images/shurek/img2.jpg",
+				"../images/shurek/img3.jpg",
+				"../images/shurek/img4.jpg",
+				"../images/shurek/img5.jpg",
+				"../images/shurek/img6.jpg",
+				];
+var target;//박스가도달할 목표지점
+var a=0.85;//비율계수
+var pos=0;
+var box;
+function init(){
+	box=document.getElementById("box");
+	box.style.width=510*arr.length+"px";
+	for(var i=0;i<arr.length;i++){
+		var img=document.createElement("img");
+		img.src=arr[i];		
+		box.appendChild(img);
+	}
+	move();
+}
+function shimg(pos){	
+	target=-(pos*510);
+	//
+	/*box.style.left=-(n*500)+"px";*/	
+}
+function move(){	
+	box.style.left=target-a*(target-parseFloat(box.style.left))+"px";
+	//box.style.left=-target+"px";
+	setTimeout("move()",30);
+}
+</script>
+</head>
+<body onLoad="init()">
+	<div id="wrapper">
+		<div id="mask">
+			<div id="box" style="position:relative;
+	left:0px;
+	top:0px;">
+				<img src="../images/shurek/img0.jpg">
+				<img src="../images/shurek/img1.jpg">
+				<img src="../images/shurek/img2.jpg">
+				<img src="../images/shurek/img3.jpg">
+				<img src="../images/shurek/img4.jpg">
+				<img src="../images/shurek/img5.jpg">
+				<img src="../images/shurek/img6.jpg">
+			</div>
+		</div>
+		<a href="javascript:shimg(0)">♥</a>
+		<a href="javascript:shimg(1)">♥</a>
+		<a href="javascript:shimg(2)">♥</a>
+		<a href="javascript:shimg(3)">♥</a>
+		<a href="javascript:shimg(4)">♥</a>
+		<a href="javascript:shimg(5)">♥</a>
+		<a href="javascript:shimg(6)">♥</a>
+	</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title></title>
+<style>
+
+#wrap{
+	text-align:auto;
+	width:300px;
+	height:300px;
+	
+}
+</style>
+<script>
+var x=1;
+
+function next(){
+	x++;
+	if(x==10){
+		x=1;
+	}
+	else{
+		document.getElementById("pic").src="../images/"+n+".png";
+	}
+		
+}
+
+
+
+</script>
+</head>
+<body>
+<div id="wrap">
+	<img src="../images/1.png" id="pic"width="300px" height="300px">
+	<div id="wrpped">
+	<input type="button" value="◀"id="prev()">
+	<input type="button" value="A" id="auto()">
+	<input type="button" value="▶" id="next()">
+	</div>
+
+</div>
+</body>
+</html>

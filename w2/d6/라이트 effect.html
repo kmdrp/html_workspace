@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+
+<title>라이트effect</title>
+<style>
+</style>
+<script>
+var ran=["balck","white","red","blue","green","orange","navy","yellow"];
+
+/*
+var ran=new Array();
+ran[0]="black";
+ran[1]="white";
+ran[2]="red";
+ran[3]="blue";
+ran[4]="orange";
+ran[5]="purple";*/
+function setbg(){
+	var i=(parseInt(Math.random()*ran.length));
+	document.body.style.background=ran[i];
+	setTimeout("setbg()",50);
+}
+/*function auto(){
+	setInterval("setbg()",500);
+	}*/
+</script>
+</head>
+<body>
+<input type="button" value="시작" onClick="setbg()">
+</body>
+</html>
