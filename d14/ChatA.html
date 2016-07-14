@@ -2,15 +2,32 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>ChatA</title>
+	<title>chatA</title>
 </head>
 <link rel="stylesheet" type="text/css" href="/css/chat.css"/>
 <script>
+var area;
+function init(){
+	area=document.getElementById("area"); 
+}
+function enter(obj){
+	
+	
+	var key=event.keyCode;
+	if(key==13){
+		opener.chatB.area.value+="A : "+(obj.value+"\n");
+		area.value+="A : "+obj.value+"\n";
+		obj.value="";
+		obj.focus();
+		
+		
+	}
+}
 </script>
-<body>
+<body onLoad="init()">
 <div id="wrapper">
-	<textarea></textarea>
-	<input type="txt">
+	<textarea id="area"></textarea>
+	<input type="txt" onKeyUP="enter(this)">
 </div>
 </body>
 </html>
